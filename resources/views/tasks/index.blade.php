@@ -2,15 +2,15 @@
 
 @section('content')
 
-    <h1>タスク一覧</h1>
+    <h1>List of Task</h1>
 
     @if (count($tasks) > 0)
        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>id</th>
-                    <th>ステータス</th>
-                    <th>タスク</th>
+                    <th>Status</th>
+                    <th>Task</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +26,6 @@
            
     @endif
 
-    {!! link_to_route('tasks.create', 'タスクの投稿', null, ['class' => 'btn btn-primary']) !!}
+    {!! link_to_route('tasks.create', 'Posting', null, ['class' => 'btn btn-primary']) !!}
 
 @endsection
