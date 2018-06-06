@@ -2,13 +2,13 @@
 
 @section('content')
 
-<h1>id: {{ $tasks->id }} Edit of Task Page</h1>
+<h1>id: {{ $task->id }} Edit of Task Page</h1>
         
         <div class="row">
         <div class="col-xs-12 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
    
 
-    {!! Form::model($tasks, ['route' => ['tasks.update', $tasks->id], 'method' => 'put']) !!}
+    {!! Form::model($task, ['route' => ['tasks.update', $task->id], 'method' => 'put']) !!}
          <div class="form-group">
         
         {!! Form::label('status', 'Status:') !!}

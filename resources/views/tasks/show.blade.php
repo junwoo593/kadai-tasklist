@@ -1,26 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-
+@if (Auth::user()->id == $task->user_id)
     <table class="table table-bordered">
         <tr>
             <th>id</th>
-            <td>{{ $tasks->id }}</td>
+            <td>{{ $task->id }}</td>
         </tr>
         <tr>
             <th>Status</th>
-            <td>{{ $tasks->status }}</td>
+            <td>{{ $task->status }}</td>
         </tr>
         <tr>
             <th>Task</th>
-            <td>{{ $tasks->content }}</td>
+            <td>{{ $task->content }}</td>
         </tr>
     </table>
 
-     {!! link_to_route('tasks.edit', 'Edit', ['id' => $tasks->id], ['class' => 'btn btn-default']) !!}
+     {!! link_to_route('tasks.edit', 'Edit', ['id' => $task->id], ['class' => 'btn btn-default']) !!}
 
-    {!! Form::model($tasks, ['route' => ['tasks.destroy', $tasks->id], 'method' => 'delete']) !!}
+    {!! Form::open(['route' => ['tasks.destroy', $task->id], 'method' => 'delete']) !!}
         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
-
+@else
+{{ print "forbidden"}}
+@endif
 @endsection
