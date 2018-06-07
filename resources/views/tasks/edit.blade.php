@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
+@if(Auth::user()->id == $task->user_id)
+   
 <h1>id: {{ $task->id }} Edit of Task Page</h1>
         
         <div class="row">
@@ -23,7 +24,10 @@
         {!! Form::submit('Update', ['class' => 'btn btn-default']) !!}
 
     {!! Form::close() !!}
-    </div>
+     </div>
        </div>
-
+    @else
+    {{ print "<img src=https://fril-love.com/wp-content/uploads/2018/02/411913.png> "}}
+  
+@endif
 @endsection

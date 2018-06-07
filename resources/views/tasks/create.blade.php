@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if(Auth::check())
 
 <h1>Create New Task</h1>
         
@@ -27,5 +28,8 @@
      
        </div>
     </div>
+    @else
+     {{ print "<img src=https://fril-love.com/wp-content/uploads/2018/02/411913.png> "}}
+     @endif
 
 @endsection
