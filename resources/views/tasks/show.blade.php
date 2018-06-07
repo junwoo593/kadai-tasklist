@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-@if (Auth::user()->id == $task->user_id)
+@if ($isError)
+    {{ print "<img src=https://fril-love.com/wp-content/uploads/2018/02/411913.png> "}}
+@else
     <table class="table table-bordered">
         <tr>
             <th>id</th>
@@ -22,7 +24,5 @@
     {!! Form::open(['route' => ['tasks.destroy', $task->id], 'method' => 'delete']) !!}
         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
-@else
-{{ print "forbidden"}}
 @endif
 @endsection

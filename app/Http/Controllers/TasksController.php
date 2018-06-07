@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Task;
+//use App\Http\Controllers\Auth;
+use App\Http\Controllers\Controller;
 
 class TasksController extends Controller
 {
@@ -75,11 +77,29 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-        $task = Task::find($id);
+         $task = \App\Task::find($id);
+         if($task == null) {
+             return "DEBUG MESAGE FOR TASK IS NULL";
+         }
+
+         if(\Auth::user()->id == $task->user_id) {
+
+      
+    
+            return view('tasks.show', [
+                  'task' =>$task,
+                  'isError' =>false
+                  ]);
         
-        return view('tasks.show',[
+         }else {
+            return view('tasks.show', [
             'task' => $task,
+            'isError' =>true
             ]);
+            
+            
+         }
+         
     }
 
     /**
@@ -134,6 +154,6 @@ class TasksController extends Controller
             $task->delete();
         }
        
-        return redirect()->back();
+        return redirect('/');
     }
 }
