@@ -79,7 +79,7 @@ class TasksController extends Controller
     {
          $task = \App\Task::find($id);
          if($task == null) {
-             return "DEBUG MESAGE FOR TASK IS NULL";
+             return "DEBUG MESSAGE FOR TASK IS NULL";
          }
 
          if(\Auth::user()->id == $task->user_id) {
